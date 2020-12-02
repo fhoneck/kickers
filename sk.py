@@ -9,6 +9,11 @@ if choice == "Passing":
     seasons = st.slider("Seasons",1932,2020,(1932,2020))
     data = data[data["Season"]>= seasons[0]]
     data = data[data["Season"]<= seasons[1]]
+    teams = sorted(list(set(data["Team"])))
+    teams.insert(0,"Any")
+    team = st.selectbox("Team",teams)
+    if team != "Any":
+        data = data[data["Team"]==team]
     cumulative = st.checkbox("Career Totals")
     if cumulative:
         x = data.groupby("Name").sum()
@@ -24,6 +29,11 @@ if choice == "Rushing":
     seasons = st.slider("Seasons",1932,2020,(1932,2020))
     data = data[data["Season"]>= seasons[0]]
     data = data[data["Season"]<= seasons[1]]
+    teams = sorted(list(set(data["Team"])))
+    teams.insert(0,"Any")
+    team = st.selectbox("Team",teams)
+    if team != "Any":
+        data = data[data["Team"]==team]
     cumulative = st.checkbox("Career Totals")
     if cumulative:
         x = data.groupby("Name").sum()
@@ -40,6 +50,11 @@ elif choice == "Kicking":
     seasons = st.slider("Seasons",1961,2020,(1961,2020))
     data = data[data["Season"]>= seasons[0]]
     data = data[data["Season"]<= seasons[1]]
+    teams = sorted(list(set(data["Team"])))
+    teams.insert(0,"Any")
+    team = st.selectbox("Team",teams)
+    if team != "Any":
+        data = data[data["Team"]==team]
     cumulative = st.checkbox("Career Totals")
     st.write("The rating in each column represents the Points Above Average for each kicker, adjusted for the league averages in each season.")
     if cumulative:
