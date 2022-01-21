@@ -6,7 +6,7 @@ if choice == "Passing":
     st.header("Passing")
     data = pd.read_csv("passerseasons.csv").drop("Unnamed: 0",1)
     data = data[["Name","Season","Team","Score","Yards","TD","INT","Age"]]
-    seasons = st.slider("Seasons",1932,2020,(1932,2020))
+    seasons = st.slider("Seasons",1932,2021,(1932,2021))
     data = data[data["Season"]>= seasons[0]]
     data = data[data["Season"]<= seasons[1]]
     teams = sorted(list(set(data["Team"])))
@@ -27,7 +27,7 @@ if choice == "Rushing":
     st.header("Rushing")
     data = pd.read_csv("rusherseasons.csv").drop("Unnamed: 0",1)
     data = data[["Name","Season","Team","Score","Yards","TD","FMB","Age"]]
-    seasons = st.slider("Seasons",1932,2020,(1932,2020))
+    seasons = st.slider("Seasons",1932,2021,(1932,2021))
     data = data[data["Season"]>= seasons[0]]
     data = data[data["Season"]<= seasons[1]]
     teams = sorted(list(set(data["Team"])))
@@ -49,7 +49,7 @@ elif choice == "Kicking":
     data = pd.read_csv("kickerseasons.csv").drop("Unnamed: 0",1)
     data = data[["Name","Season","Team","Total","50+","40-49","30-39","20-29","0-19","XP","Age"]]
     data = data[abs(data["XP"])+abs(data["0-19"])+abs(data["20-29"])+abs(data["30-39"])+abs(data["40-49"])+abs(data["50+"])!= 0]
-    seasons = st.slider("Seasons",1961,2020,(1961,2020))
+    seasons = st.slider("Seasons",1961,2021,(1961,2021))
     data = data[data["Season"]>= seasons[0]]
     data = data[data["Season"]<= seasons[1]]
     teams = sorted(list(set(data["Team"])))
